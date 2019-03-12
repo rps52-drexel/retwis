@@ -1,0 +1,17 @@
+FROM debian:jessie
+
+VOLUME /var/www/html
+
+RUN apt-get update && \
+    apt-get install -y \
+    locales \
+    apache2 \
+    php5 \
+    php5-cli \
+    libapache2-mod-php5 \
+    php5-gd \
+    php5-json && \
+    docker-php-ext-enable redis
+
+EXPOSE 80
+

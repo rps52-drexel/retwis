@@ -1,0 +1,16 @@
+version: '2'
+services:
+  web:
+    build:
+      context: deployment/web
+      dockerfile: Dockerfile-php-5.6
+    container_name: devweb1
+    ports:
+      - "8080:80"
+    links:
+      - redis:devcache1
+    volumes:
+      - ./web/html:/var/www/html
+  redis:
+    build: deployment/cache
+    container_name: devcache1
