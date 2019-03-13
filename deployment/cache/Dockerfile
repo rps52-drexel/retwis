@@ -1,26 +1,5 @@
-#
-# Redis Dockerfile
-#
-# https://github.com/dockerfile/redis
-#
+FROM redis:3.2-alpine
 
-# Pull base image.
-FROM ubuntu
-
-WORKDIR /app
-
-COPY . /app
-
-RUN apt-get update && \
-    apt-get -y upgrade && \
-    apt-get install -y build-essential && \
-    apt-get install -y wget && \
-    wget http://download.redis.io/redis-stable.tar.gz && \
-    tar xvzf redis-stable.tar.gz && \
-    cd redis-stable && \
-    make && \
-    make install 
+CMD ["redis-server", "/usr/local/etc/redis.conf"]
 
 EXPOSE 6379
-
-CMD redis-server

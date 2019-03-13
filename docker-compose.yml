@@ -13,4 +13,6 @@ services:
       - ./web:/var/www/html
   redis:
     build: deployment/cache
+    volumes:
+      - ./deployment/cache/conf:/usr/local/etc/redis.conf
     container_name: devcache1
