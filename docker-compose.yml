@@ -10,7 +10,7 @@ services:
     links:
       - redis:devcache1
     volumes:
-      - ./web/html:/var/www/html
+      - ./web:/var/www/html
   redis:
     build: deployment/cache
     container_name: devcache1

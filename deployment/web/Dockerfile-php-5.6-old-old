@@ -1,6 +1,8 @@
 FROM debian:jessie
 
 VOLUME /var/www/html
+COPY web/ /var/www/html
+RUN ls -al /var/www/html
 
 RUN apt-get update && \
     apt-get install -y \
